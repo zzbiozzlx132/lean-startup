@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Lean Handbook: Nền Tảng & Thực Thi Chuyên Sâu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: #f7f8fa;
+            color: #1c1e21;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 2px dotted #0866ff;
+            cursor: help;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 350px;
+            background-color: #1c1e21;
+            color: #fff;
+            text-align: left;
+            border-radius: 8px;
+            padding: 12px 16px;
+            position: absolute;
+            z-index: 10;
+            bottom: 135%;
+            left: 50%;
+            margin-left: -175px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-weight: 500;
+            box-shadow: 0 12px 28px 0 rgba(0,0,0,0.2), 0 2px 4px 0 rgba(0,0,0,0.1);
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #1c1e21;
+            letter-spacing: -0.025em;
+        }
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #1c1e21;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #0866ff;
+            padding-bottom: 0.75rem;
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1),0 8px 16px rgba(0,0,0,.1);
+            margin-bottom: 2.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 1rem;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 1rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 3rem;
+            padding-left: 3rem;
+            border-left: 3px solid #e4e6eb;
+        }
+        .timeline-item:last-child {
+            border-left-color: transparent;
+        }
+        .timeline-marker {
+            position: absolute;
+            left: -1rem;
+            top: 0.1rem;
+            width: 1.875rem;
+            height: 1.875rem;
+            border-radius: 9999px;
+            background-color: #f0f2f5;
+            border: 4px solid #e4e6eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #606770;
+        }
+        .bar-chart-bar {
+            background-color: #0866ff;
+            transition: width 0.5s ease-in-out;
+            text-align: right;
+            padding: 0.25rem 0.75rem;
+            color: white;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+
+        <header class="text-center mb-20">
+            <h1 class="main-title">Ultimate Lean Handbook</h1>
+            <p class="text-xl text-gray-600 mt-4 max-w-4xl mx-auto">Tài liệu huấn luyện từ Nền tảng đến Chuyên sâu, trang bị cho đội ngũ tư duy và công cụ để xây dựng sản phẩm mà khách hàng thực sự mong muốn.</p>
+        </header>
+
+        <section class="card">
+            <h2 class="section-title">Phần I: Nền tảng Lean Startup</h2>
+            <p class="text-lg text-gray-700 mb-6">Trước khi đi vào thực thi, đội ngũ cần nắm vững 3 trụ cột định hình nên tư duy này.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg border">
+                    <h3 class="font-bold text-xl mb-2">1. Mục tiêu Cốt lõi: Học hỏi</h3>
+                    <p>Mục tiêu không phải là "xây dựng sản phẩm A". Mục tiêu là "tìm ra một mô hình kinh doanh bền vững". Sản phẩm A chỉ là một trong nhiều thử nghiệm để đạt được mục tiêu đó.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg border">
+                    <h3 class="font-bold text-xl mb-2">2. Động cơ Vận hành: Vòng lặp Build-Measure-Learn</h3>
+                    <p>Đây là chu trình khoa học để biến ý tưởng thành giá trị. Chúng ta xây dựng một thử nghiệm (MVP), đo lường kết quả bằng dữ liệu, và rút ra bài học để quyết định bước tiếp theo.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg border">
+                    <h3 class="font-bold text-xl mb-2">3. Quyết định Chiến lược: Pivot or Persevere</h3>
+                    <p>Sau mỗi vòng lặp, dựa trên dữ liệu, chúng ta phải đưa ra quyết định khó khăn: tiếp tục tối ưu hướng đi hiện tại (Persevere) hay thay đổi một yếu tố nền tảng (Pivot).</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2 class="section-title">Phần II: Case Study Chuyên Sâu - "PromptVerse"</h2>
+            <p class="text-lg text-gray-700 mb-8">Chúng ta sẽ theo dõi hành trình của "PromptVerse", một sản phẩm số cung cấp prompt AI chuyên dụng cho marketing, tập trung vào 2 lĩnh vực đang nóng nhất: **tạo hình ảnh và video quảng cáo**.</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="p-6 bg-gray-50 border rounded-lg">
+                        <span class="tag bg-gray-200 text-gray-800">Vòng lặp 1: Xác thực Nhu cầu & Mức giá</span>
+                        <table class="mt-4">
+                            <tr>
+                                <th class="w-1/4">Câu hỏi</th>
+                                <td>"Các Marketer có thực sự gặp khó khăn với prompt AI, và họ có sẵn sàng trả tiền cho một bộ prompt chất lượng không?"</td>
+                            </tr>
+                            <tr>
+                                <th>Build (MVP 1)</th>
+                                <td><strong>"Ebook" MVP:</strong> Soạn một Ebook PDF tên là "50 Prompt AI Đột Phá Cho Hình Ảnh Quảng Cáo". Tạo một landing page đơn giản để bán Ebook này với giá 199.000đ (one-time payment).</td>
+                            </tr>
+                            <tr>
+                                <th>Measure (KPI)</th>
+                                <td>Đạt 50 lượt mua Ebook trong 2 tuần.</td>
+                            </tr>
+                            <tr>
+                                <th>Learn & Quyết định</th>
+                                <td>
+                                    <strong>Kết quả:</strong> Đạt 120 lượt mua. Hơn 30 email gửi về hỏi "Có prompt cho video không?".
+                                    <br><strong>Bài học:</strong> Nhu cầu là có thật và rất lớn (validated). Khách hàng cũng rất quan tâm đến video (new insight).
+                                    <br><strong>Quyết định:</strong> <span class="tag bg-green-500 text-white">KIÊN TRÌ (PERSEVERE)</span>. Phát triển ý tưởng về một sản phẩm subscription.
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="p-6 bg-gray-50 border rounded-lg">
+                        <span class="tag bg-gray-200 text-gray-800">Vòng lặp 2: Kiểm chứng Mô hình Subscription</span>
+                        <table class="mt-4">
+                            <tr>
+                                <th>Câu hỏi</th>
+                                <td>"Khách hàng có sẵn sàng trả tiền theo tháng (subscription) để nhận prompt mới liên tục không?"</td>
+                            </tr>
+                            <tr>
+                                <th>Build (MVP 2)</th>
+                                <td><strong>"Newsletter trả phí" MVP:</strong> Tạo một trang đăng ký cho "PromptVerse Weekly". Với 499.000đ/tháng, khách hàng sẽ nhận được email mỗi tuần với 10 prompt mới (5 cho ảnh, 5 cho video).</td>
+                            </tr>
+                            <tr>
+                                <th>Measure (KPI)</th>
+                                <td>Có được 20 người đăng ký trả phí trong tháng đầu tiên.</td>
+                            </tr>
+                            <tr>
+                                <th>Learn & Quyết định</th>
+                                <td>
+                                    <strong>Kết quả:</strong> Chỉ có 5 người đăng ký. Tỷ lệ mở email cao (70%) nhưng tỷ lệ click vào các prompt video cao gấp 3 lần prompt ảnh.
+                                    <br><strong>Bài học:</strong> Mô hình subscription còn yếu. "Nỗi đau" về tạo video dường như lớn hơn nhiều so với tạo ảnh.
+                                    <br><strong>Quyết định:</strong> <span class="tag bg-red-500 text-white">XOAY TRỤC (PIVOT)</span>. Thay đổi từ một dịch vụ chung chung sang tập trung hoàn toàn vào video.
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                     <div class="p-6 bg-gray-50 border rounded-lg">
+                        <span class="tag bg-gray-200 text-gray-800">Vòng lặp 3: Xác thực Ngách Video</span>
+                        <table class="mt-4">
+                            <tr>
+                                <th>Câu hỏi</th>
+                                <td>"Nếu chúng ta tập trung 100% vào video, khách hàng có thấy giá trị cao hơn và sẵn sàng trả tiền không?"</td>
+                            </tr>
+                            <tr>
+                                <th>Build (MVP 3)</th>
+                                <td><strong>"Webinar" MVP:</strong> Tổ chức một webinar miễn phí: "Tạo Kịch Bản Video Quảng Cáo Viral trong 30 phút với AI". Cuối webinar, chào bán một sản phẩm số duy nhất: "Bộ 100 Prompt AI Chuyên Sâu Cho Video Quảng Cáo" giá 999.000đ.</td>
+                            </tr>
+                            <tr>
+                                <th>Measure (KPI)</th>
+                                <td>Tỷ lệ chuyển đổi từ người tham dự webinar thành người mua > 10%.</td>
+                            </tr>
+                            <tr>
+                                <th>Learn & Quyết định</th>
+                                <td>
+                                    <strong>Kết quả:</strong> 200 người tham dự, 30 người mua (tỷ lệ 15%). Trong phần Q&A, rất nhiều người hỏi về cách tạo ra các video dạng "talking head" (người nói chuyện) và review sản phẩm.
+                                    <br><strong>Bài học:</strong> Ngách video là một "mỏ vàng" (validated). Khách hàng có nhu cầu rất cụ thể về các dạng video nhất định.
+                                    <br><strong>Quyết định:</strong> <span class="tag bg-green-500 text-white">KIÊN TRÌ (PERSEVERE)</span>. Bắt đầu xây dựng một sản phẩm phần mềm (SaaS) thực sự cho ngách này.
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                 <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                     <div class="p-6 bg-gray-50 border rounded-lg">
+                        <span class="tag bg-gray-200 text-gray-800">Vòng lặp 4: Kiểm chứng Tính năng Cốt lõi của SaaS</span>
+                        <table class="mt-4">
+                            <tr>
+                                <th>Câu hỏi</th>
+                                <td>"Tính năng nào là quan trọng nhất đối với người dùng trong một công cụ tạo video AI?"</td>
+                            </tr>
+                            <tr>
+                                <th>Build (MVP 4)</th>
+                                <td><strong>"Single-Feature" MVP:</strong> Phát triển một phiên bản web-app cực kỳ đơn giản. Người dùng nhập mô tả sản phẩm, AI sẽ tạo ra 3 kịch bản video dạng "review sản phẩm" và cho phép họ chọn 1 giọng đọc AI để nghe thử.</td>
+                            </tr>
+                            <tr>
+                                <th>Measure (KPI)</th>
+                                <td>Tỷ lệ người dùng thử quay lại sử dụng ít nhất 1 lần trong tuần đầu tiên (Weekly Retention) > 20%.</td>
+                            </tr>
+                            <tr>
+                                <th>Learn & Quyết định</th>
+                                <td>
+                                    <strong>Kết quả:</strong> Retention đạt 35%. Người dùng yêu cầu thêm tính năng tự động chèn hình ảnh sản phẩm vào video.
+                                    <br><strong>Bài học:</strong> Tính năng cốt lõi (tạo kịch bản + giọng đọc) có giá trị cao và giữ chân người dùng (validated). Nhu cầu tiếp theo đã rõ ràng.
+                                    <br><strong>Quyết định:</strong> <span class="tag bg-green-500 text-white">KIÊN TRÌ (PERSEVERE)</span>. Tiếp tục phát triển tính năng tiếp theo được yêu cầu nhiều nhất.
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">5</div>
+                     <div class="p-6 bg-gray-50 border rounded-lg">
+                        <span class="tag bg-emerald-200 text-emerald-800">Vòng lặp 5: Đạt Product-Market Fit</span>
+                        <table class="mt-4">
+                            <tr>
+                                <th>Câu hỏi</th>
+                                <td>"Sản phẩm của chúng ta đã đủ tốt để người dùng trả tiền một cách bền vững và giới thiệu cho người khác chưa?"</td>
+                            </tr>
+                            <tr>
+                                <th>Build (MVP 5)</th>
+                                <td><strong>"Early Access" SaaS:</strong> Hoàn thiện các tính năng chính (tạo kịch bản, giọng đọc, chèn ảnh, thêm nhạc nền). Mở bán phiên bản "Early Access" với giá 799.000đ/tháng cho 100 khách hàng đầu tiên.</td>
+                            </tr>
+                            <tr>
+                                <th>Measure (KPI)</th>
+                                <td>1. Lấp đầy 100 suất trong 1 tháng. <br>2. Tỷ lệ hủy đăng ký (Churn Rate) sau tháng đầu tiên < 10%.</td>
+                            </tr>
+                            <tr>
+                                <th>Learn & Quyết định</th>
+                                <td>
+                                    <strong>Kết quả:</strong> Lấp đầy 100 suất trong 3 tuần. Churn Rate chỉ 5%. Bắt đầu xuất hiện các bài review tự nhiên trên mạng xã hội.
+                                    <br><strong>Bài học:</strong> Chúng ta đã tạo ra một sản phẩm mà một phân khúc thị trường cụ thể thực sự cần và sẵn sàng trả tiền để sử dụng lâu dài.
+                                    <br><strong>Quyết định:</strong> <span class="tag bg-emerald-500 text-white">ĐẠT PRODUCT-MARKET FIT</span>. Giai đoạn rủi ro nhất đã qua. Bây giờ là lúc chuyển sang giai đoạn Tăng trưởng (Scaling).
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2 class="section-title">Phần III: Bộ Công Cụ Thực Thi Chi Tiết</h2>
+            <p class="text-lg text-gray-700 mb-8">Đây là checklist nâng cao, giữ nguyên cấu trúc logic nhưng bổ sung ví dụ chi tiết và cấu trúc tư duy để đội ngũ của bạn có thể áp dụng ngay lập tức.</p>
+            <div class="overflow-x-auto">
+                 <table class="min-w-full">
+                    <thead>
+                        <tr>
+                            <th>Giai đoạn</th>
+                            <th>Câu Hỏi Cốt Lõi</th>
+                            <th>Mục tiêu & Output</th>
+                            <th>⚠️ Cạm bẫy cần tránh</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr>
+                            <td rowspan="2" class="font-bold bg-gray-50 align-middle">1. Đặt Giả Thuyết</td>
+                            <td><strong>Vấn đề cốt lõi là gì?</strong></td>
+                            <td>
+                                <strong>Mục tiêu:</strong> Phát biểu được "nỗi đau" một cách rõ ràng.
+                                <br><strong>Output:</strong> Một câu mô tả vấn đề.
+                                <br><strong>Cấu trúc:</strong> [Đối tượng] + gặp phải [Nỗi đau] + khi cố gắng [Mục tiêu].
+                                <br>---
+                                <br><strong>Ví dụ:</strong>
+                                <br>1. "[Các shop online nhỏ] + [tốn quá nhiều thời gian/tiền bạc] + [khi cố gắng tạo ảnh sản phẩm chuyên nghiệp]."
+                                <br>2. "[Các content creator] + [không có ý tưởng mới] + [khi cố gắng làm video hàng tuần]."
+                                <br>3. "[Các team dự án] + [thường xuyên giao tiếp không hiệu quả] + [khi cố gắng làm việc qua email và các file rời rạc]."
+                            </td>
+                            <td>
+                                <strong>Cạm bẫy: "Giải pháp đi tìm vấn đề"</strong>
+                                <br>---
+                                <br><strong>Ví dụ sai:</strong>
+                                <br>1. ❌ "Tôi muốn làm một app dùng AI." (Đây là giải pháp, không phải vấn đề).
+                                <br>2. ❌ "Khách hàng cần một công cụ quản lý công việc tốt hơn." (Quá chung chung, "tốt hơn" là gì?).
+                                <br>3. ❌ "Đối thủ có tính năng X, chúng ta cũng phải có." (Đây là phản ứng, không phải xuất phát từ nỗi đau khách hàng).
+                            </td>
+                        </tr>
+                         <tr>
+                            <td><strong>Giả thuyết rủi ro nhất là gì?</strong></td>
+                            <td>
+                                <strong>Mục tiêu:</strong> Xác định 1 niềm tin, nếu sai, sẽ phá hỏng toàn bộ dự án.
+                                <br><strong>Output:</strong> Một câu giả định có thể kiểm chứng.
+                                <br><strong>Cấu trúc:</strong> "Chúng tôi tin rằng [Đối tượng] + sẽ [Hành động có thể đo lường] + vì [Lý do/Giá trị]."
+                                <br>---
+                                <br><strong>Ví dụ:</strong>
+                                <br>1. "Chúng tôi tin rằng [các shop online] + [sẽ trả 300.000đ/tháng] + [vì nó giúp họ có ảnh sản phẩm đẹp hơn và tiết kiệm thời gian]."
+                                <br>2. "Chúng tôi tin rằng [các content creator] + [sẽ đăng ký gói premium] + [vì nó giúp họ không bao giờ bí ý tưởng video]."
+                                <br>3. "Chúng tôi tin rằng [các team] + [sẽ chuyển từ Slack/Email sang dùng công cụ của chúng ta] + [vì nó giúp giảm 50% thời gian họp vô ích]."
+                            </td>
+                            <td>
+                                <strong>Cạm bẫy: "Kiểm chứng những thứ không quan trọng"</strong>
+                                <br>---
+                                <br><strong>Ví dụ sai:</strong>
+                                <br>1. ❌ "Liệu người dùng có thích màu xanh của cái nút bấm không?" (Có thể test sau, không phải rủi ro cốt lõi).
+                                <br>2. ❌ "Liệu chúng ta có thể xây dựng được công nghệ AI này không?" (Đây là rủi ro kỹ thuật, không phải rủi ro thị trường).
+                                <br>3. ❌ "Liệu sếp có thích ý tưởng này không?" (Ý kiến của sếp không phải là dữ liệu từ thị trường).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" class="font-bold bg-gray-50 align-middle">2. Xây Dựng & Đo Lường</td>
+                            <td><strong>MVP để kiểm chứng là gì?</strong></td>
+                            <td>
+                                <strong>Mục tiêu:</strong> Thiết kế một thử nghiệm nhanh và rẻ nhất.
+                                <br><strong>Output:</strong> Một kế hoạch hành động cụ thể cho MVP.
+                                <br><strong>Cấu trúc:</strong> "Bằng cách [Hành động MVP], + chúng ta sẽ kiểm chứng liệu [Giả thuyết cần kiểm chứng]."
+                                <br>---
+                                <br><strong>Ví dụ:</strong>
+                                <br>1. "Bằng cách [tạo một landing page và chạy quảng cáo], + chúng ta sẽ kiểm chứng liệu [khách hàng có click vào nút 'Mua ngay' ở giá 300.000đ không]."
+                                <br>2. "Bằng cách [gửi một email newsletter miễn phí trong 1 tháng], + chúng ta sẽ kiểm chứng liệu [họ có thực sự thấy các ý tưởng video hữu ích qua tỷ lệ click]."
+                                <br>3. "Bằng cách [làm thủ công quy trình cho 3 team], + chúng ta sẽ kiểm chứng liệu [họ có thấy hiệu quả và sẵn sàng trả tiền để tiếp tục không]."
+                            </td>
+                            <td>
+                                <strong>Cạm bẫy: "Xây dựng quá nhiều" (Over-building)</strong>
+                                <br>---
+                                <br><strong>Ví dụ sai:</strong>
+                                <br>1. ❌ "Chúng ta cần code cả phần đăng nhập, quản lý tài khoản, thanh toán cho MVP đầu tiên." (Chưa cần thiết, bạn có thể làm thủ công).
+                                <br>2. ❌ "MVP phải hỗ trợ cả iOS và Android." (Hãy bắt đầu với 1 nền tảng trước).
+                                <br>3. ❌ "Chúng ta cần hoàn thiện thiết kế trước khi bắt đầu thử nghiệm." (Wireframe đơn giản là đủ để bắt đầu học hỏi).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Chỉ số thành công (KPI) là gì?</strong></td>
+                            <td>
+                                <strong>Mục tiêu:</strong> Đặt ra một con số cụ thể để biết thắng/thua.
+                                <br><strong>Output:</strong> Một mục tiêu định lượng.
+                                <br><strong>Cấu trúc:</strong> "[Chỉ số] + [Toán tử so sánh] + [Ngưỡng thành công] + trong [Khung thời gian]."
+                                <br>---
+                                <br><strong>Ví dụ:</strong>
+                                <br>1. "[Tỷ lệ chuyển đổi trên landing page] + [>] + [5%] + [trong 2 tuần]."
+                                <br>2. "[Tỷ lệ giữ chân người đọc newsletter] + [>] + [40%] + [sau 4 tuần]."
+                                <br>3. "[Số team đồng ý trả tiền] + [=] + [3] + [sau 1 tháng thử nghiệm]."
+                            </td>
+                            <td>
+                                <strong>Cạm bẫy: "Các chỉ số phù phiếm" (Vanity Metrics)</strong>
+                                <br>---
+                                <br><strong>Ví dụ sai:</strong>
+                                <br>1. ❌ "Đạt 10,000 lượt xem trang." (Không cho biết họ có quan tâm hay không).
+                                <br>2. ❌ "Có 1,000 người theo dõi trên Fanpage." (Không đồng nghĩa với việc họ sẽ mua hàng).
+                                <br>3. ❌ "Nhận được nhiều lời khen 'ý tưởng hay quá'." (Lời khen miễn phí. Hành động trả tiền mới là dữ liệu thật).
+                            </td>
+                        </tr>
+                         <tr>
+                            <td rowspan="2" class="font-bold bg-gray-50 align-middle">3. Học Hỏi & Quyết Định</td>
+                            <td><strong>Sự thật rút ra từ dữ liệu là gì?</strong></td>
+                            <td>
+                                <strong>Mục tiêu:</strong> So sánh giữa kỳ vọng và thực tế.
+                                <br><strong>Output:</strong> Một câu insight.
+                                <br><strong>Cấu trúc:</strong> "Dù chúng tôi kỳ vọng [Điều A], + dữ liệu thực tế cho thấy [Sự thật B], + có thể là vì [Nguyên nhân sâu xa]."
+                                <br>---
+                                <br><strong>Ví dụ:</strong>
+                                <br>1. "Dù chúng tôi kỳ vọng [họ thích tính năng A], + dữ liệu thực tế cho thấy [80% thời gian họ chỉ dùng tính năng B], + có thể là vì [tính năng B giải quyết vấn đề cấp bách hơn]."
+                                <br>2. "Dù chúng tôi kỳ vọng [tỷ lệ chuyển đổi sẽ cao], + dữ liệu thực tế cho thấy [nó rất thấp], + nhưng [những người đã mua lại có tỷ lệ giới thiệu bạn bè rất cao]."
+                                <br>3. "Dù chúng tôi kỳ vọng [họ sẽ dùng sản phẩm theo quy trình 1-2-3], + dữ liệu thực tế cho thấy [họ tự tạo ra quy trình 1-3-2], + có thể là vì [cách đó tự nhiên hơn]."
+                            </td>
+                            <td>
+                                <strong>Cạm bẫy: "Bỏ qua dữ liệu định tính"</strong>
+                                <br>---
+                                <br><strong>Ví dụ sai:</strong>
+                                <br>1. ❌ "Số người dùng giảm 10%, chắc là do giao diện xấu." (Đây là phỏng đoán, không phải sự thật. Hãy gọi cho 5 người dùng đã rời đi và hỏi họ).
+                                <br>2. ❌ "Tính năng A không ai dùng, hãy xóa nó đi." (Hãy tìm hiểu 'tại sao' trước. Có thể họ không tìm thấy nó).
+                                <br>3. ❌ "Chỉ tin vào số liệu thống kê." (Một cuộc phỏng vấn sâu với 1 khách hàng có thể cho bạn nhiều insight hơn là 1000 dòng dữ liệu).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kiên trì hay Xoay trục?</strong></td>
+                            <td>
+                                <strong>Mục tiêu:</strong> Đưa ra quyết định chiến lược.
+                                <br><strong>Output:</strong> Một hành động tiếp theo rõ ràng.
+                                <br><strong>Cấu trúc:</strong> "Dựa trên [Bài học], + chúng ta quyết định [Hành động] + vì [Lý do chiến lược]."
+                                <br>---
+                                <br><strong>Ví dụ:</strong>
+                                <br>1. "Dựa trên [tỷ lệ chuyển đổi tốt], + chúng ta quyết định [Kiên trì và tối ưu hóa luồng đăng ký] + vì [cần tăng hiệu quả trước khi mở rộng]."
+                                <br>2. "Dựa trên [việc khách hàng mục tiêu không trả tiền], + chúng ta quyết định [Xoay trục sang đối tượng doanh nghiệp nhỏ] + vì [họ có ngân sách và nỗi đau rõ ràng hơn]."
+                                <br>3. "Dựa trên [dữ liệu chưa rõ ràng], + chúng ta quyết định [Thử nghiệm lại với một MVP khác] + vì [cần thêm bằng chứng trước khi đầu tư lớn]."
+                            </td>
+                            <td>
+                                <strong>Cạm bẫy: "Yêu ý tưởng của mình"</strong>
+                                <br>---
+                                <br><strong>Ví dụ sai:</strong>
+                                <br>1. ❌ "Dữ liệu nói không ai cần, nhưng tôi tin là họ sai. Cứ làm tiếp đi." (Đây là con đường dẫn đến thất bại).
+                                <br>2. ❌ "Đây không phải là 'xoay trục', chỉ là thêm một tính năng mới." (Nếu bạn đang cố gắng sửa một giả thuyết sai bằng cách thêm tính năng, đó là dấu hiệu nguy hiểm).
+                                <br>3. ❌ "Liên tục 'xoay trục' mỗi tuần." (Xoay trục là một quyết định chiến lược dựa trên bài học sâu sắc, không phải là chạy theo mọi ý tưởng chợt nảy ra).
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
